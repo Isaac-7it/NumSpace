@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme {
+    --breakpoint-sm: 480px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 976px;
+    --color-default: ;
+    --font-family: "SN Pro",
+        sans-serif;
+    --line-height: 1.2;
+}
+
+@layer components {
+    .custom-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(80px, 1fr));
+        grid-template-rows: repeat(4, 72px);
+        gap: 8px;
+        text-align: center;
+    }
+
+    .active-bg {
+        background-color: #4F39F6;
+    }
+
+    .active-text {
+        color: #fff;
+    }
+
+    .inactive-bg {
+        background: #F3F4F6;
+    }
+
+    .inactive-text {
+        color: #333333;
+    }
+
+    .border-gray {
+        border-color: #a7a6a6;
+    }
+}
