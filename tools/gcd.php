@@ -1,5 +1,22 @@
 <?php
 include_once '../utility/header.php';
+include_once '../utility/CommonDivisors.php';
+
+if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number1', $_GET) && array_key_exists('number2', $_GET)) {
+    $numberOne = (int) htmlspecialchars(trim($_GET['number1']));
+    $numberTwo = (int) htmlspecialchars(trim($_GET['number2']));
+    $error = '';
+
+    if(filter_var($numberOne, FILTER_VALIDATE_INT) && filter_var($numberTwo, FILTER_VALIDATE_INT)) {
+        $numberOne = (int) filter_var($numberOne, FILTER_SANITIZE_NUMBER_INT);
+        $numberTwo = (int) filter_var($numberTwo, FILTER_SANITIZE_NUMBER_INT);
+
+        $gcd = (new CommonDivisors()) -> getGCD($numberOne, $numberTwo);
+        $result = $gcd;
+    } else {
+        $error .= 'An error occured!!';
+    }
+}
 ?>
     <div class="custom-grid mb-4">
         <a href="./coprimeDetector.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Coprimes Detector</a>
@@ -24,19 +41,21 @@ include_once '../utility/header.php';
         </div>
 
         <div class="">
-            <div class="flex flex-wrap justify-between mb-4">
-                <input type="hidden" name="tool" value="gcd">
+            <div class="flex flex-col flex-wrap justify-between mb-4">
                 <div class="flex justify-between items-center flex-1 mb-2 gap-2.5">
                     <label for="number1" class="text-[14px] text-[#a7a6a6]">a</label>
-                    <input type="number1" id="number1" name="number1" class="border-gray border-[1.6px] flex-1 rounded-md p-1">
+                    <input type="number1" id="number1" name="number1" class="border-gray border-[1.6px] flex-1 rounded-md p-1" value="<?= $numberOne ?? '' ?>">
                 </div>    
                 <div class="flex justify-between items-center flex-1 gap-2.5">
                     <label for="number2" class="text-[14px] text-[#a7a6a6]">b</label>
-                    <input type="number" id="number2" name="number2" class="border-gray border-[1.6px] flex-1 rounded-md p-1">
+                    <input type="number" id="number2" name="number2" class="border-gray border-[1.6px] flex-1 rounded-md p-1" value="<?= $numberTwo ?? '' ?>">
                 </div>
             </div>
             <button type="submit" class="bg-[#4F39F6] text-white w-full rounded-lg p-2">Determine GCD</button>
         </div>
     </form>
     </div>
+    <span class="bg-[#F3F4F6] block h-0.5 mb-4">&nbsp;</span>
+    <h4> <span class="text-[#a7a6a6]">Result:</span></h4>
+    <p> <?= $error ?? '', $result ?? '' ?> </p>
 </main>

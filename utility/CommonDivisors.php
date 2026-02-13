@@ -1,5 +1,6 @@
 <?php
 include_once '../utility/Factors.php';
+include_once '../utility/Euclidean.php';
 
 class CommonDivisors {
     public $commonDivisors = [];
@@ -18,5 +19,21 @@ class CommonDivisors {
        
 
         return $this -> commonDivisors;
+    }
+
+    public function getGCD($a, $b) {
+        $notFound = true;
+        $euclidean = new Euclidean();
+        while($notFound) {
+            $remainder = $euclidean -> getRemainder($a, $b);
+            $quotient = $euclidean -> getQuotient($a, $b);
+            if($remainder === 0) {
+                $notFound = false;
+                return $b;
+            } else {
+                $a = $b;
+                $b = $remainder;
+            }
+        }
     }
 }
