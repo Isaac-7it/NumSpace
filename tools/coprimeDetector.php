@@ -1,6 +1,6 @@
 <?php
 include_once '../utility/header.php';
-include_once '../utility/CommonDivisors.php';
+include_once '../utility/Coprime.php';
 
 if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number1', $_GET) && array_key_exists('number2', $_GET)) {
     $numberOne = (int) htmlspecialchars(trim($_GET['number1']));
@@ -10,14 +10,13 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number1', $_GET) &&
     if(filter_var($numberOne, FILTER_VALIDATE_INT) && filter_var($numberTwo, FILTER_VALIDATE_INT)) {
         $numberOne = (int) filter_var($numberOne, FILTER_SANITIZE_NUMBER_INT);
         $numberTwo = (int) filter_var($numberTwo, FILTER_SANITIZE_NUMBER_INT);
-        
-        $gcd = (new CommonDivisors()) -> getGCD($numberOne, $numberTwo);
-
-        if($gcd === 1) {
+        $coprime = new Coprime();
+        if($coprime -> isCoprime($numberOne, $numberTwo)) {
             $result = "Yes! The number ${numberOne} and ${numberTwo} are Coprimes";
         } else {
             $result = "No! The number ${numberOne} and ${numberTwo} are <span class='text-red-500'>not</span> Coprimes";
         }
+        
     } else {
         $error .= 'An error occured!!';
     }
@@ -49,11 +48,11 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number1', $_GET) &&
         <div class="flex flex-col flex-wrap justify-between mb-4">
             <div class="flex justify-between items-center flex-1 mb-2">
                 <label for="number1" class="text-[14px] text-[#a7a6a6]">First Number</label>
-                <input type="text" id="number1" name="number1" class="border-gray border-[1.6px] basis-1/2 rounded-md p-1" value="<?= $number1 ?? '' ?>">
+                <input type="text" id="number1" name="number1" class="border-gray border-[1.6px] basis-1/2 rounded-md p-1" value="<?= $numberOne ?? '' ?>">
             </div>    
             <div class="flex justify-between items-center flex-1">
                 <label for="number2" class="text-[14px] text-[#a7a6a6]">Second Number</label>
-                <input type="text" id="number2" name="number2" class="border-gray border-[1.6px] basis-1/2 rounded-md p-1" value="<?= $number2 ?? '' ?>">
+                <input type="text" id="number2" name="number2" class="border-gray border-[1.6px] basis-1/2 rounded-md p-1" value="<?= $numberTwo ?? '' ?>">
             </div>
         </div>
         <p class="text-red-500"><?php // $error ?? '' ?></p>

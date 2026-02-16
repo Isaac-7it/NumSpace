@@ -1,6 +1,25 @@
 <?php
 include_once '../utility/header.php';
+include_once '../utility/ResidueModulo.php';
+
+
+if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number', $_GET)) {
+    $inputValue = (int) htmlspecialchars(trim($_GET['number']));
+    $error = '';
+
+    $residue = new ResidueModulo();
+    if(filter_var($inputValue, FILTER_VALIDATE_INT) || $inputValue === 0) {
+        $inputValue = (int) filter_var($inputValue, FILTER_SANITIZE_NUMBER_INT);
+        $residue = new ResidueModulo();
+
+        $result = $residue -> getTotient($inputValue);
+    } else {
+        $error .= 'Invalid input!';
+    }
+}
+
 ?>
+
     <div class="custom-grid mb-4">
         <a href="./coprimeDetector.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Coprimes Detector</a>
         <a href="./absolute.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Absolute Value</a>
@@ -29,11 +48,14 @@ include_once '../utility/header.php';
                 <div class="flex items-baseline flex-1 mb-2">
                     <label for="" class="text-9xl text-[#333]">&Zopf;</label>
                     <label for="number" class="text-[16px] text-[#a7a6a6]">m: </label>
-                    <input type="number" id="number" name="number" class="border-gray border-[1.6px] w-10 rounded-md p-1">
+                    <input type="number" id="number" name="number" class="border-gray border-[1.6px] w-10 rounded-md p-1" value="<?= $inputValue ?>">
                 </div>    
             </div>
             <button type="submit" class="bg-[#4F39F6] text-white w-full rounded-lg p-2">Obtain Totient</button>
         </div>
     </form>
     </div>
+    <span class="bg-[#F3F4F6] block h-0.5 mb-4">&nbsp;</span>
+    <h4 class="text-[24px]"> <span class="text-[#a7a6a6]">Result (φ(m)):</span></h4>
+    <p> <?= $error ?? '', $result ?? '' ?> </p>
 </main>

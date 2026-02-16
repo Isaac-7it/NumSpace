@@ -216,17 +216,8 @@
   .w-full {
     width: 100%;
   }
-  .max-w-2xl {
-    max-width: var(--container-2xl);
-  }
-  .max-w-3 {
-    max-width: calc(var(--spacing) * 3);
-  }
-  .max-w-3xl {
-    max-width: var(--container-3xl);
-  }
-  .max-w-3xs {
-    max-width: var(--container-3xs);
+  .w-max {
+    width: max-content;
   }
   .flex-1 {
     flex: 1;
@@ -269,9 +260,6 @@
   }
   .gap-2\.5 {
     gap: calc(var(--spacing) * 2.5);
-  }
-  .gap-4 {
-    gap: calc(var(--spacing) * 4);
   }
   .rounded-\[10px\] {
     border-radius: 10px;
