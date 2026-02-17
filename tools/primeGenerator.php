@@ -40,14 +40,14 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('from', $_GET) && ar
         </div>
 
         <div class="">
-            <div class="flex flex-wrap justify-between mb-4">
-                <div class="flex justify-between items-center flex-1 mb-2">
+            <div class="flex flex-wrap justify-between mb-4 gap-2 sm:flex-row sm:flex-nowrap sm:gap-4">
+                <div class="flex flex-col justify-between items-start flex-1 sm:flex-col sm:items-start sm:mb-0">
                     <label for="number1" class="text-[14px] text-[#a7a6a6]">from</label>
-                    <input type="text" id="number1" name="from" class="border-gray border-[1.6px] basis-1/2 rounded-md p-1" value="<?= $fromValue ?? '' ?>"> 
+                    <input type="text" id="number1" name="from" class="border-gray border-[1.6px] basis-1/2 rounded-md p-1 sm:basis-full w-full" value="<?= $fromValue ?? '' ?>"> 
                 </div>    
-                <div class="flex justify-between items-center flex-1">
+                <div class="flex flex-col justify-between items-start flex-1">
                     <label for="number2" class="text-[14px] text-[#a7a6a6]">to</label>
-                    <input type="text" id="number2" name="to" class="border-gray border-[1.6px] basis-1/2 rounded-md p-1" value="<?= $toValue ?? '' ?>">
+                    <input type="text" id="number2" name="to" class="border-gray border-[1.6px] basis-1/2 rounded-md p-1 sm:basis-full w-full" value="<?= $toValue ?? '' ?>">
                 </div>
             </div>
             <button type="submit" class="bg-[#4F39F6] text-white w-full rounded-lg p-2">Check Prime</button>
@@ -55,7 +55,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('from', $_GET) && ar
        </form>
     </div>
     <span class="bg-[#F3F4F6] block h-0.5 mb-4">&nbsp;</span>
-    <h4> <span class="text-[#a7a6a6]">Result:</span></h4>
+    <h4 class="text-[24px]"> <span class="text-[#a7a6a6]">Result:</span></h4>
     <p> <?= $error ?? '', $result ?? '' ?> </p>
 </main>
     

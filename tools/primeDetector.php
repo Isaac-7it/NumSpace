@@ -47,9 +47,9 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number', $_GET)) {
 
         <div class="">
             <div class="flex flex-wrap justify-between mb-4">
-                <div class="flex justify-between items-center flex-1 mb-2 gap-2">
+                <div class="flex flex-col justify-between items-start flex-1 mb-2 gap-2">
                     <label for="number" class="text-[14px] text-[#a7a6a6]">Number</label>
-                    <input type="number" id="number" name="number" class="border-gray border-[1.6px] flex-1 rounded-md p-1" value="<?= $inputValue ?>">
+                    <input type="number" id="number" name="number" class="border-gray border-[1.6px] flex-1 rounded-md p-1 w-full" value="<?= $inputValue ?>">
                 </div>
             </div>
             <button type="submit" class="bg-[#4F39F6] text-white w-full rounded-lg p-2">Check Prime</button>
@@ -57,6 +57,6 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number', $_GET)) {
     </form>
     </div>
      <span class="bg-[#F3F4F6] block h-0.5 mb-4">&nbsp;</span>
-    <h4> <span class="text-[#a7a6a6]">Result:</span></h4>
+    <h4 class="text-[24px]"> <span class="text-[#a7a6a6]">Result:</span></h4>
     <p> <?= $error ?? '', $result ?? '' ?> </p>
 </main>

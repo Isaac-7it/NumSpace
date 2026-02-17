@@ -4,6 +4,7 @@ class Factors {
     public function getFactors(int $number) : array | string
     {
         if($number == 0) {
+            // throw an exception instead
             return '0 has infinitely many factors!';
         } else {
             $factors = [];

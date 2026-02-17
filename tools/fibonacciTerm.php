@@ -61,7 +61,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number', $_GET)) {
             <h3 class="text-4xl">F</h3><sup> <?= $inputValue ?? 'n' ?></sup>
         </div>
         <div class="p">&equals;</div>
-        <p> <?= $result ?? '' ?> </p>
+        <h4 class="text-[24px]"><p> <?= $result ?? '' ?> </p></h4>
    </div>
     <p> <?= $error ?? '' ?> </p>
 </main>

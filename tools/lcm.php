@@ -44,8 +44,8 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number1', $_GET) &&
         </div>
 
         <div class="">
-            <div class="flex flex-wrap justify-between mb-4">
-                <div class="flex justify-between items-center flex-1 mb-2 gap-2.5">
+            <div class="flex flex-wrap justify-between mb-4 md:gap-2.5">
+                <div class="flex justify-between items-center flex-1 mb-2 gap-2.5 md:mb-0">
                     <label for="number1" class="text-[14px] text-[#a7a6a6]">a</label>
                     <input type="number" id="number1" name="number1" class="border-gray border-[1.6px] flex-1 rounded-md p-1" value="<?= $numberOne ?? '' ?>">
                 </div>    

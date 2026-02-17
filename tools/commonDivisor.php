@@ -41,14 +41,14 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number1', $_GET) &&
         </div>
 
         <div class="">
-            <div class="flex flex-wrap justify-between mb-4">
-                <div class="flex justify-between items-center flex-1 mb-2 gap-2.5">
+            <div class="flex flex-wrap justify-between mb-4 gap-2.5 sm:flex-row sm:flex-nowrap sm:gap-4">
+                <div class="flex justify-between items-center flex-1 gap-2.5 sm:flex-col sm:items-start sm:mb-0">
                     <label for="number1" class="text-[14px] text-[#a7a6a6]">a</label>
-                    <input type="number" id="number1" name="number1" class="border-gray border-[1.6px] flex-1 rounded-md p-1" value="<?= $numberOne ?>">
+                    <input type="number" id="number1" name="number1" class="border-gray border-[1.6px] flex-1 rounded-md p-1 sm:basis-full w-full" value="<?= $numberOne ?>">
                 </div>    
-                <div class="flex justify-between items-center flex-1 gap-2.5">
+                <div class="flex justify-between items-center flex-1 gap-2.5 sm:flex-col sm:items-start sm:mb-0">
                     <label for="number2" class="text-[14px] text-[#a7a6a6]">b</label>
-                    <input type="number" id="number2" name="number2" class="border-gray border-[1.6px] flex-1 rounded-md p-1" value="<?= $numberTwo ?>">
+                    <input type="number" id="number2" name="number2" class="border-gray border-[1.6px] flex-1 rounded-md p-1 sm:basis-full w-full" value="<?= $numberTwo ?>">
                 </div>
             </div>
             <button type="submit" class="bg-[#4F39F6] text-white w-full rounded-lg p-2">Generate Common Divisor(s)</button>
@@ -56,6 +56,6 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number1', $_GET) &&
     </form>
     </div>
     <span class="bg-[#F3F4F6] block h-0.5 mb-4">&nbsp;</span>
-    <h4> <span class="text-[#a7a6a6]">Result:</span></h4>
+    <h4 class="text-[24px]"> <span class="text-[#a7a6a6]">Result:</span></h4>
     <p> <?= $error ?? '', $result ?? '' ?> </p>
 </main>

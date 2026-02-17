@@ -53,6 +53,6 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number', $_GET)) {
         </form>
     </div>
     <span class="bg-[#F3F4F6] block h-0.5 mb-4">&nbsp;</span>
-    <h4> <span class="text-[#a7a6a6]">Result:</span></h4>
+    <h4 class="text-[24px]"> <span class="text-[#a7a6a6]">Result:</span></h4>
     <p> <?= $error ?? '', $result ?? '' ?> </p>
 </main>

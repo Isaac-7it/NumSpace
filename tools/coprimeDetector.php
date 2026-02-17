@@ -45,14 +45,14 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number1', $_GET) &&
     </div>
 
     <div class="">
-        <div class="flex flex-col flex-wrap justify-between mb-4">
-            <div class="flex justify-between items-center flex-1 mb-2">
+        <div class="flex flex-col flex-wrap justify-between mb-4 sm:flex-row sm:flex-nowrap sm:gap-4">
+            <div class="flex justify-between items-center flex-1 mb-2 sm:flex-col sm:items-start sm:mb-0">
                 <label for="number1" class="text-[14px] text-[#a7a6a6]">First Number</label>
-                <input type="text" id="number1" name="number1" class="border-gray border-[1.6px] basis-1/2 rounded-md p-1" value="<?= $numberOne ?? '' ?>">
+                <input type="text" id="number1" name="number1" class="border-gray border-[1.6px] basis-[65%] rounded-md p-1 w-full sm:basis-full " value="<?= $numberOne ?? '' ?>">
             </div>    
-            <div class="flex justify-between items-center flex-1">
+            <div class="flex justify-between items-center flex-1 sm:flex-col sm:items-start">
                 <label for="number2" class="text-[14px] text-[#a7a6a6]">Second Number</label>
-                <input type="text" id="number2" name="number2" class="border-gray border-[1.6px] basis-1/2 rounded-md p-1" value="<?= $numberTwo ?? '' ?>">
+                <input type="text" id="number2" name="number2" class="border-gray border-[1.6px] basis-[65%] rounded-md p-1 w-full sm:basis-full" value="<?= $numberTwo ?? '' ?>">
             </div>
         </div>
         <p class="text-red-500"><?php // $error ?? '' ?></p>

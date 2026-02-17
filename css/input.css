@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-    --breakpoint-sm: 480px;
-    --breakpoint-md: 768px;
+    --breakpoint-sm: 400px;
+    --breakpoint-md: 450px;
     --breakpoint-lg: 976px;
     --color-default: ;
     --font-family: "SN Pro",
