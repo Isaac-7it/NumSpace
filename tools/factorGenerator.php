@@ -6,7 +6,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number', $_GET)) {
     $inputValue = htmlspecialchars(trim($_GET['number']));
     $error = '';
 
-    if(filter_var($inputValue, FILTER_VALIDATE_INT) || $inputValue === '0') {
+    if(filter_var($inputValue, FILTER_VALIDATE_INT) !== false) {
         $sanitizedInput = (int) filter_var($inputValue, FILTER_SANITIZE_NUMBER_INT);
         $factors = (new Factors()) -> getFactors($sanitizedInput);
         $result = is_array($factors) ? implode(', ', $factors) : $factors;

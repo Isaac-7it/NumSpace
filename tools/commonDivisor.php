@@ -7,7 +7,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number1', $_GET) &&
     $numberTwo = (int) htmlspecialchars(trim($_GET['number2']));
     $error = '';
 
-    if(filter_var($numberOne, FILTER_VALIDATE_INT) && filter_var($numberTwo, FILTER_VALIDATE_INT)) {
+    if((filter_var($numberOne, FILTER_VALIDATE_INT) !== false) && (filter_var($numberTwo, FILTER_VALIDATE_INT) !== false)) {
         $numberOne = (int) filter_var($numberOne, FILTER_SANITIZE_NUMBER_INT);
         $numberTwo = (int) filter_var($numberTwo, FILTER_SANITIZE_NUMBER_INT);
         $commonDivisors = (new CommonDivisors()) -> getCommonDivisors($numberOne, $numberTwo);

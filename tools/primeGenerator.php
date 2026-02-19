@@ -7,7 +7,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('from', $_GET) && ar
     $toValue = (int) htmlspecialchars(trim($_GET['to']));
     $error = '';
 
-    if(filter_var($fromValue, FILTER_VALIDATE_INT) && filter_var($toValue, FILTER_VALIDATE_INT)) {
+    if((filter_var($fromValue, FILTER_VALIDATE_INT) !== false) && (filter_var($toValue, FILTER_VALIDATE_INT) !== false)) {
         $fromValue = (int) filter_var($fromValue, FILTER_SANITIZE_NUMBER_INT);
         $toValue = (int) filter_var($toValue, FILTER_SANITIZE_NUMBER_INT);
         $primes = (new PrimeGenerator()) -> getPrimes($fromValue, $toValue);

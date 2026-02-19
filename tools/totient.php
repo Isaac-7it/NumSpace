@@ -8,7 +8,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number', $_GET)) {
     $error = '';
 
     $residue = new ResidueModulo();
-    if(filter_var($inputValue, FILTER_VALIDATE_INT) || $inputValue === 0) {
+    if(filter_var($inputValue, FILTER_VALIDATE_INT) !== false) {
         $inputValue = (int) filter_var($inputValue, FILTER_SANITIZE_NUMBER_INT);
         $residue = new ResidueModulo();
 

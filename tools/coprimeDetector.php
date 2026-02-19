@@ -2,12 +2,14 @@
 include_once '../utility/header.php';
 include_once '../utility/Coprime.php';
 
+var_dump(filter_var(0, FILTER_VALIDATE_INT));
 if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number1', $_GET) && array_key_exists('number2', $_GET)) {
     $numberOne = (int) htmlspecialchars(trim($_GET['number1']));
     $numberTwo = (int) htmlspecialchars(trim($_GET['number2']));
     $error = '';
 
-    if(filter_var($numberOne, FILTER_VALIDATE_INT) && filter_var($numberTwo, FILTER_VALIDATE_INT)) {
+
+    if((filter_var($numberOne, FILTER_VALIDATE_INT) !== false) && (filter_var($numberTwo, FILTER_VALIDATE_INT) !== false)) {
         $numberOne = (int) filter_var($numberOne, FILTER_SANITIZE_NUMBER_INT);
         $numberTwo = (int) filter_var($numberTwo, FILTER_SANITIZE_NUMBER_INT);
         $coprime = new Coprime();
