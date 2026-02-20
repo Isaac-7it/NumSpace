@@ -2,7 +2,6 @@
 include_once '../utility/header.php';
 include_once '../utility/Coprime.php';
 
-var_dump(filter_var(0, FILTER_VALIDATE_INT));
 if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number1', $_GET) && array_key_exists('number2', $_GET)) {
     $numberOne = (int) htmlspecialchars(trim($_GET['number1']));
     $numberTwo = (int) htmlspecialchars(trim($_GET['number2']));
