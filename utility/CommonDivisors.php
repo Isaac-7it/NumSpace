@@ -22,17 +22,21 @@ class CommonDivisors {
     }
 
     public function getGCD($a, $b) {
-        $notFound = true;
-        $division = new Division();
-        while($notFound) {
-            $remainder = $division -> getRemainder($a, $b);
-            $quotient = $division -> getQuotient($a, $b);
-            if($remainder === 0) {
-                $notFound = false;
-                return $b;
-            } else {
-                $a = $b;
-                $b = $remainder;
+        if($b === 0) {
+            return $a;
+        } else {
+            $gcdNotFound = true;
+            $division = new Division();
+            while($gcdNotFound) {
+                $remainder = $division -> getRemainder($a, $b);
+                $quotient = $division -> getQuotient($a, $b);
+                if($remainder === 0) {
+                    $gcdNotFound = false;
+                    return abs($b);
+                } else {
+                    $a = $b;
+                    $b = $remainder;
+                }
             }
         }
     }
