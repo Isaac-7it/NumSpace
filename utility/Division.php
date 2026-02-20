@@ -33,10 +33,11 @@ class Division {
         // } elseif ($a > $b) {
         //     return $b;
         // }
+        $b = abs($b);
 
         if($b === 0) {
             return 'Undefined!';
-        } elseif (($a < 0 && $b > 0) && ($a % $b) !== 0) {
+        } elseif ($a < 0 && ($a % $b) !== 0) {
             return ($a % $b) + $b;
         } else {
             return $a % $b;
