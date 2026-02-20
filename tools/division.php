@@ -1,6 +1,6 @@
 <?php
 include_once '../utility/header.php';
-include_once '../utility/Euclidean.php';
+include_once '../utility/Division.php';
 
 if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number1', $_GET) && array_key_exists('number2', $_GET)) {
     $numberOne = (int) htmlspecialchars(trim($_GET['number1']));
@@ -11,9 +11,9 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number1', $_GET) &&
         $numberOne = (int) filter_var($numberOne, FILTER_SANITIZE_NUMBER_INT);
         $numberTwo = (int) filter_var($numberTwo, FILTER_SANITIZE_NUMBER_INT);
         
-        $euclidean = new Euclidean();
-        $quotient = $euclidean -> getQuotient($numberOne, $numberTwo);
-        $remainder = $euclidean -> getRemainder($numberOne, $numberTwo);
+        $division = new Division();
+        $quotient = $division -> getQuotient($numberOne, $numberTwo);
+        $remainder = $division -> getRemainder($numberOne, $numberTwo);
 
         $result = "q: ${quotient}, r: ${remainder}";
     } else {
@@ -27,7 +27,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number1', $_GET) &&
         <a href="./factorGenerator.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Factor Generator</a>
         <a href="./primeDetector.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Prime Detector</a>
         <a href="./primeGenerator.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Prime Generator</a>
-        <a href="./euclidean.php" class="flex items-center justify-center rounded-[10px] active-bg active-text p-2">Euclidean Algorithm</a>
+        <a href="./division.php" class="flex items-center justify-center rounded-[10px] active-bg active-text p-2">Division Algorithm</a>
         <a href="./gcd.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">GCD</a>
         <a href="./lcm.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">LCM</a>
         <a href="./commonDivisor.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Common Divisor</a>
@@ -39,7 +39,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number1', $_GET) &&
     <div class=" mb-4">
     <form class="" method="GET">
         <div class="mb-6">
-            <h2 class="text-[24px] font-medium text-[#333333]">Euclidean Algorithm</h2>
+            <h2 class="text-[24px] font-medium text-[#333333]">Division Algorithm</h2>
             <p class="text-[#a7a6a6]">Let a be any integer and b be a positive integer. Then there exist uniquely integers q and r such that
 a = bq + r and 0 <= r < b</p>
         </div>

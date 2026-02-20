@@ -35,7 +35,9 @@ class Division {
         // }
 
         if($b === 0) {
-            return 'Undefined';
+            return 'Undefined!';
+        } elseif (($a < 0 && $b > 0) && ($a % $b) !== 0) {
+            return ($a % $b) + $b;
         } else {
             return $a % $b;
         } 

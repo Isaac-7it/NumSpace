@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number1', $_GET) &&
         <a href="./factorGenerator.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Factor Generator</a>
         <a href="./primeDetector.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Prime Detector</a>
         <a href="./primeGenerator.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Prime Generator</a>
-        <a href="./euclidean.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Euclidean Algorithm</a>
+        <a href="./division.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Division Algorithm</a>
         <a href="./gcd.php" class="flex items-center justify-center rounded-[10px] active-bg active-text p-2">GCD</a>
         <a href="./lcm.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">LCM</a>
         <a href="./commonDivisor.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Common Divisor</a>
