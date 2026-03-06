@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('from', $_GET) && ar
         $primes = (new PrimeGenerator()) -> getPrimes($fromValue, $toValue);
         $result = is_array($primes) ? implode(', ', $primes) : $primes;
     } else {
-        $error .= 'An error occured!!';
+        $error .= 'Error!!!';
     }
 }
 ?>
@@ -50,7 +50,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('from', $_GET) && ar
                     <input type="text" id="number2" name="to" class="border-gray border-[1.6px] basis-1/2 rounded-md p-1 sm:basis-full w-full" value="<?= $toValue ?? '' ?>">
                 </div>
             </div>
-            <button type="submit" class="bg-[#4F39F6] text-white w-full rounded-lg p-2">Check Prime</button>
+            <button type="submit" class="bg-[#4F39F6] text-white w-full rounded-lg p-2">Fetch Prime(s)</button>
         </div>
        </form>
     </div>
