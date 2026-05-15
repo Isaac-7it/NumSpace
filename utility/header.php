@@ -15,6 +15,7 @@ $cssHref = '/NumSpace/css/output.css?v=' . $cssVersion;
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=SN+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="font-family p-2">
     <main class="">
