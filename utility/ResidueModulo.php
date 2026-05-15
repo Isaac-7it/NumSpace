@@ -1,6 +1,6 @@
 <?php
-include_once '../utility/PrimeChecker.php';
-include_once '../utility/Coprime.php';
+include_once __DIR__ . '/PrimeChecker.php';
+include_once __DIR__ . '/Coprime.php';
 
 class ResidueModulo {
     public function getTotient($m) {

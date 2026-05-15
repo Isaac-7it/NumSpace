@@ -1,5 +1,5 @@
 <?php
-include_once '../utility/Factors.php';
+include_once __DIR__ . '/Factors.php';
 
 class Prime {
 
@@ -10,15 +10,11 @@ class Prime {
            $factors = (new Factors()) -> getFactors($absoluteInputValue);
 
             if(count($factors) === 4) {
-                // $result = "The number ${inputValue} is prime";
                 return true;
             } else {
-                // $result = "The number ${inputValue} is <span class='text-red-500'>not</span> prime";
                 return false;
             }
-        } 
-        else {
-            // $result = "The number ${inputValue} is <span class='text-red-500'>not</span> prime";
+        } else {
             return false;
         }
     }

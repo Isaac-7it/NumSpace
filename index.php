@@ -1,5 +1,5 @@
 <?php
-include_once '../utility/header.php';
+include_once './utility/header.php';
 ?>
     <div class="custom-grid mb-4">
         <a href="./coprimeDetector.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Coprimes Detector</a>

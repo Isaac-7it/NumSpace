@@ -1,6 +1,6 @@
 <?php
-include_once '../utility/Factors.php';
-include_once '../utility/Division.php';
+include_once __DIR__ . '/Factors.php';
+include_once __DIR__ . '/Division.php';
 
 class CommonDivisors {
     public $commonDivisors = [];

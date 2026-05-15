@@ -1,14 +1,14 @@
 <?php
-include_once '../utility/PrimeChecker.php';
+include_once __DIR__ . '/PrimeChecker.php';
 
 class PrimeGenerator {
-    public function getPrimes($from, $to): array | string
+    public function getPrimes($a, $b): array | string
     {
-         if($from > $to) {
+         if($a > $b) {
             return 'Starting number cannot be greater than or equal to ending number';
         } else {
             $allNumbers = [];
-            for($i = $from; $i <= $to; $i++) {
+            for($i = $a; $i <= $b; $i++) {
                     $allNumbers[] = $i;
             }
 

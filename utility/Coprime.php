@@ -1,5 +1,5 @@
 <?php
-include_once '../utility/CommonDivisors.php';
+include_once __DIR__ . '/CommonDivisors.php';
 
 class Coprime {
     public function isCoprime($a, $b) {
@@ -11,4 +11,4 @@ class Coprime {
             return false;
         }
     }
-} 
+}

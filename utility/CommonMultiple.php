@@ -1,5 +1,5 @@
 <?php
-include_once '../utility/PrimeGenerator.php';
+include_once __DIR__ . '/PrimeGenerator.php';
 
 class CommonMultiple {
     public function getLowestCommonMultiple($a, $b) {

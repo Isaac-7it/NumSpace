@@ -1,6 +1,6 @@
 <?php
-include_once '../utility/header.php';
-include_once '../utility/Division.php';
+include_once './utility/header.php';
+include_once './utility/Division.php';
 
 if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number1', $_GET) && array_key_exists('number2', $_GET)) {
     $numberOne = (int) htmlspecialchars(trim($_GET['number1']));

@@ -1,24 +1,22 @@
 <?php
-include_once '../utility/header.php';
-include_once '../utility/Absolute.php';
+include_once './utility/header.php';
+include_once './utility/Factors.php';
 
 if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number', $_GET)) {
     $inputValue = htmlspecialchars(trim($_GET['number']));
     $error = '';
+
     if(filter_var($inputValue, FILTER_VALIDATE_INT) !== false) {
-        $inputValue = (int) filter_var($inputValue, FILTER_SANITIZE_NUMBER_INT);
-
-        $result = (new Absolute()) -> getAbsoluteValue($inputValue);
-
-    } else {
-        $error .= 'Invalid input! We expect an integer.';
+        $sanitizedInput = (int) filter_var($inputValue, FILTER_SANITIZE_NUMBER_INT);
+        $factors = (new Factors()) -> getFactors($sanitizedInput);
+        $result = is_array($factors) ? implode(', ', $factors) : $factors;
     }
 }
 ?>
     <div class="custom-grid mb-4">
         <a href="./coprimeDetector.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Coprimes Detector</a>
-        <a href="./absolute.php" class="flex items-center justify-center rounded-[10px] active-bg active-text p-2">Absolute Value</a>
-        <a href="./factorGenerator.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Factor Generator</a>
+        <a href="./absolute.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Absolute Value</a>
+        <a href="./factorGenerator.php" class="flex items-center justify-center rounded-[10px] active-bg active-text p-2">Factor Generator</a>
         <a href="./primeDetector.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Prime Detector</a>
         <a href="./primeGenerator.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Prime Generator</a>
         <a href="./division.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Division Algorithm</a>
@@ -33,22 +31,22 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number', $_GET)) {
     <div class=" mb-4">
     <form class="" method="GET">
         <div class="mb-6">
-            <h2 class="text-[24px] font-medium text-[#333333]">Absolute Value</h2>
-            <p class="text-[#a7a6a6]">The absolute value of a number x is 
-    -x if x < 0; 0 if x = 0; x if x > 0</p>
+            <h2 class="text-[24px] font-medium text-[#333333]">Factor Generator</h2>
+            <p class="text-[#a7a6a6]">The factor of a number a is all integer b such that b | a</p>
         </div>
 
         <div class="">
             <div class="flex flex-wrap justify-between mb-4">
                 <div class="flex flex-col justify-between items-start flex-1 mb-2 gap-2">
                     <label for="number" class="text-[14px] text-[#a7a6a6]">Number</label>
-                    <input type="text" id="number" name="number" class="border-gray border-[1.6px] flex-1 rounded-md p-1 w-full" value="<?= $inputValue ?? '' ?>">
+                    <input type="number" id="number" name="number" class="border-gray border-[1.6px] flex-1 rounded-md p-1 w-full" value="<?= $inputValue ?>">
                 </div>
             </div>
-            <button type="submit" class="bg-[#4F39F6] text-white w-full rounded-lg p-2">Absolute value</button>
+            <button type="submit" class="bg-[#4F39F6] text-white w-full rounded-lg p-2">Generate Factors</button>
         </div>
-        <h4 class="text-[24px]"> <span class="text-[#a7a6a6]">Result:</span></h4>
-            <p> <?= $error ?? '', $result ?? '' ?> </p>
-       </form>
+    </form>
     </div>
+    <span class="bg-[#F3F4F6] block h-0.5 mb-4">&nbsp;</span>
+    <h4 class="text-[24px]"> <span class="text-[#a7a6a6]">Result:</span></h4>
+    <p> <?= $error ?? '', $result ?? '' ?> </p>
 </main>

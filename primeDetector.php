@@ -1,23 +1,33 @@
 <?php
-include_once '../utility/header.php';
-include_once '../utility/Factors.php';
+include_once './utility/header.php';
+include_once './utility/PrimeChecker.php';
+
 
 if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number', $_GET)) {
-    $inputValue = htmlspecialchars(trim($_GET['number']));
+    $inputValue = (int) htmlspecialchars(trim($_GET['number']));
     $error = '';
 
     if(filter_var($inputValue, FILTER_VALIDATE_INT) !== false) {
-        $sanitizedInput = (int) filter_var($inputValue, FILTER_SANITIZE_NUMBER_INT);
-        $factors = (new Factors()) -> getFactors($sanitizedInput);
-        $result = is_array($factors) ? implode(', ', $factors) : $factors;
+        $inputValue = (int) filter_var($inputValue, FILTER_SANITIZE_NUMBER_INT);
+        $isPrime = (new Prime()) -> primeChecker($inputValue);
+
+        if($isPrime) {
+            $result = "Yes! The number ${inputValue} is prime";
+        } else {
+            $result = "No! The number ${inputValue} is <span class='text-red-500'>not</span> prime";
+        }
+    } else {
+        $error .= 'Invalid input! We expect an integer.';
     }
 }
+
 ?>
+
     <div class="custom-grid mb-4">
         <a href="./coprimeDetector.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Coprimes Detector</a>
         <a href="./absolute.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Absolute Value</a>
-        <a href="./factorGenerator.php" class="flex items-center justify-center rounded-[10px] active-bg active-text p-2">Factor Generator</a>
-        <a href="./primeDetector.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Prime Detector</a>
+        <a href="./factorGenerator.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Factor Generator</a>
+        <a href="./primeDetector.php" class="flex items-center justify-center rounded-[10px] active-bg active-text p-2">Prime Detector</a>
         <a href="./primeGenerator.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Prime Generator</a>
         <a href="./division.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">Division Algorithm</a>
         <a href="./gcd.php" class="flex items-center justify-center rounded-[10px] inactive-bg inactive-text p-2">GCD</a>
@@ -31,8 +41,8 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number', $_GET)) {
     <div class=" mb-4">
     <form class="" method="GET">
         <div class="mb-6">
-            <h2 class="text-[24px] font-medium text-[#333333]">Factor Generator</h2>
-            <p class="text-[#a7a6a6]">The factor of a number a is all integer b such that b | a</p>
+            <h2 class="text-[24px] font-medium text-[#333333]">Prime Detector</h2>
+            <p class="text-[#a7a6a6]">A integer P such that |P| > 1 is said to be prime if its factors are +/- P and +-1</p>
         </div>
 
         <div class="">
@@ -42,11 +52,11 @@ if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('number', $_GET)) {
                     <input type="number" id="number" name="number" class="border-gray border-[1.6px] flex-1 rounded-md p-1 w-full" value="<?= $inputValue ?>">
                 </div>
             </div>
-            <button type="submit" class="bg-[#4F39F6] text-white w-full rounded-lg p-2">Generate Factors</button>
+            <button type="submit" class="bg-[#4F39F6] text-white w-full rounded-lg p-2">Check Prime</button>
         </div>
     </form>
     </div>
-    <span class="bg-[#F3F4F6] block h-0.5 mb-4">&nbsp;</span>
+     <span class="bg-[#F3F4F6] block h-0.5 mb-4">&nbsp;</span>
     <h4 class="text-[24px]"> <span class="text-[#a7a6a6]">Result:</span></h4>
     <p> <?= $error ?? '', $result ?? '' ?> </p>
 </main>

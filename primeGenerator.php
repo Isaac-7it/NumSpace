@@ -1,6 +1,6 @@
 <?php
-include_once '../utility/header.php';
-include_once '../utility/PrimeGenerator.php';
+include_once './utility/header.php';
+include_once './utility/PrimeGenerator.php';
 
 if($_SERVER['REQUEST_METHOD'] === 'GET' && array_key_exists('from', $_GET) && array_key_exists('to', $_GET)) {
     $fromValue = (int) htmlspecialchars(trim($_GET['from']));
